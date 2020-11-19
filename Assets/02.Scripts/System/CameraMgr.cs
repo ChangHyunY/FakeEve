@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class CameraMgr : MonoBehaviour
 {
     public static CameraMgr instance = null;
@@ -69,9 +71,15 @@ public class CameraMgr : MonoBehaviour
 
     public void Rotate()
     {
-        mainCamera.transform.RotateAround(target.position, mainCamera.transform.up, -Input.GetAxis("Mouse X") * rotateSpeed);
+        mainCamera.transform.RotateAround(target.position, mainCamera.transform.up, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime);
 
-        mainCamera.transform.RotateAround(target.position, mainCamera.transform.right, -Input.GetAxis("Mouse Y") * rotateSpeed);
+        mainCamera.transform.RotateAround(target.position, mainCamera.transform.right, -Input.GetAxis("Mouse Y") * rotateSpeed * Time.deltaTime);
+
+        Vector3 newRotate = mainCamera.transform.rotation.eulerAngles;
+
+        newRotate.z = 0.0f;
+
+        mainCamera.transform.rotation = Quaternion.Euler(newRotate);
     }
 
     public void LockTarget(Transform _target)
