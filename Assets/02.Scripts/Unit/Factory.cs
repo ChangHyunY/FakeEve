@@ -31,6 +31,7 @@ public abstract class RaceFactory : MonoBehaviour
                 float z = Random.Range(-5, 6);
 
                 enemyPool[i].transform.position = new Vector3(enemyPool[i].transform.position.x + x, enemyPool[i].transform.position.y + y, enemyPool[i].transform.position.z + z);
+                //enemyPool[i].transform.position = new Vector3(m_Anomaly.transform.position.x + x, m_Anomaly.transform.position.y + y, m_Anomaly.transform.position.z + z);
                 enemyPool[i].SetActive(true);
 
                 break;

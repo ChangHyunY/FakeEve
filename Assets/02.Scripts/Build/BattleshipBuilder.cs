@@ -36,6 +36,9 @@ public class BattleshipBuilder : MonoBehaviour, IShipBuilder
 
         obj.AddComponent<BattleShip>();
 
+        // 배틀쉽 FSM 설정★
+        obj.AddComponent<StateMgr>();
+
         // 플레이어 쉽 싱글톤
         DontDestroyOnLoad(obj);
     }
